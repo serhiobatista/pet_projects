@@ -152,8 +152,6 @@ with filtered_customers as (
 
 )
 
-Решение
-
 select c.first_name,
        c.last_name
        fc.total_sum,
