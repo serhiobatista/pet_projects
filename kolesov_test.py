@@ -95,14 +95,15 @@ on a.customer_id = c.id
 Необходимо написать запрос, который вернет количество заказов по месяцам за последние 6 месяцев, начиная с текущего месяца. 
 Необходимо учитывать только те заказы, которые были оплачены.
 
-Решение
-
 Таблица "orders":
 • id (int) - уникальный идентификатор заказа
 • date (date) - дата заказа
 • status (varchar) - статус заказа (оплачен, не оплачен и т.д.)
 • amount (float) - сумма заказа
 • customer_id (int) - идентификатор покупателя
+
+
+Решение
 
 select date_part('month',date) order_month,
        count(id) cnt_orders
@@ -111,7 +112,6 @@ where (date_part('year', now()) - date_part('year',date)) * 12 +
        (date_part('month', now()) - date_part('month', date)) <=6
        and status = 'paid'
 group by date_part('month',date) order_month
-
 
 
 
@@ -139,7 +139,7 @@ group by date_part('month',date) order_month
 
 
 
-
+Решение
 -- отфильтровываем таблицу с заказами и оставляем только id клиентов, которые отвечают условиям задачи
 
 with filtered_customers as (
